@@ -50,9 +50,9 @@ export class SigninService {
 
 			const profile = await this.userProfilesRepository.findOneByOrFail({ userId: user.id });
 			if (profile.email && profile.emailVerified) {
-				this.emailService.sendEmail(profile.email, 'New login / ログインがありました',
-					'There is a new login. If you do not recognize this login, update the security status of your account, including changing your password. / 新しいログインがありました。このログインに心当たりがない場合は、パスワードを変更するなど、アカウントのセキュリティ状態を更新してください。',
-					'There is a new login. If you do not recognize this login, update the security status of your account, including changing your password. / 新しいログインがありました。このログインに心当たりがない場合は、パスワードを変更するなど、アカウントのセキュリティ状態を更新してください。');
+				this.emailService.sendEmail(profile.email, '新登录提醒',
+					'系统检测到新的登录活动。如果这不是您本人的操作，请更新您的帐号安全状态，包括修改密码。',
+					'系统检测到新的登录活动。如果这不是您本人的操作，请更新您的帐号安全状态，包括修改密码。');
 			}
 		});
 
